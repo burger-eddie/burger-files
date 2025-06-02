@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>BOIS CAFE</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 10px;
+    }
+    .photo {
+      width: 100%;
+      max-width: 400px;
+      margin: 10px auto;
+      display: block;
+      border-radius: 8px;
+    }
+    .map-link {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+    .comment {
+      font-style: italic;
+      margin-top: 10px;
+      color: #333;
+    }
+    .chart-box {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+    canvas {
+      max-width: 300px;
+      max-height: 300px;
+    }
+    .score {
+      text-align: center;
+      font-weight: bold;
+      font-size: 18px;
+      margin-top: 10px;
+    }
+    a {
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>🍔 BOIS CAFE</h1>
+
+  <!-- マップリンク -->
+  <p style="display: flex; align-items: center; gap: 6px; margin-top: 12px;">
+  <span style="font-size: 18px; display: inline-block; transform: translateY(10px);">📍</span>
+  <a href="https://maps.app.goo.gl/Pdpxn9ho7qcq54im6" target="_blank">
+    岐阜県瑞穂市馬場春雨町１丁目４９ 第一吉田ビル １０２号（Googleマップで開く）
+  </a>
+</p>
+
+  <!-- 写真 -->
+<img class="photo" src="images/bois_cafe.jpg" alt="bois_cafeの写真" style="max-width: 100%; height: auto; display: block; margin: 10px auto;">
+
+
+  <!-- 感想 -->
+  <p class="comment">バーガーに挟まる野菜類は火を通した玉ねぎのみで、全体的にシック。そして注目すべきが、コーヒーと合わせるという新感覚。確かにコーヒーとベストマッチしており、コーヒー自体も美味い。でもやっぱりコーラが恋しい。サイドにポテトがないのも恋しい。</p>
+
+  <!-- グラフ -->
+  <div class="chart-box">
+    <canvas id="frankChart"></canvas>
+  </div>
+
+  <!-- 合計スコア -->
+  <p class="score">合計スコア：23.5点</p>
+
+  <!-- トップに戻る -->
+  <a href="gifu.html">← 岐阜の店一覧に戻る</a>
+
+ <script>
+  const ctx = document.getElementById('frankChart');
+  new Chart(ctx, {
+    type: 'radar',
+    data: {
+      labels: ['立地', '雰囲気', 'パティ', 'バンズ', 'ボリューム', '香り', 'サイド'],
+      datasets: [{
+        label: '評価スコア',
+        data: [4, 2, 3, 3.5, 3, 4, 4],
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        borderWidth: 2
+      }]
+    },
+    options: {
+      scales: {
+        r: {
+          suggestedMin: 0,
+          suggestedMax: 6,
+          ticks: {
+            stepSize: 1,
+            color: '#333', // 数字の色
+            font: {
+              size: 12
+            }
+          },
+          pointLabels: {
+            font: {
+              size: 14
+            },
+            color: '#444'
+          },
+          grid: {
+            color: 'rgba(200, 200, 200, 0.3)' // グリッド線
+          },
+          angleLines: {
+            color: 'rgba(150, 150, 150, 0.2)' // 軸の線
+          }
+        }
+      }
+    }
+  });
+</script>
+</body>
+</html>

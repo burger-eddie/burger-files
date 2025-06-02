@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>滋賀のバーガー店</title>
+<style>
+  body {
+    background-image: url("images/wood_bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #fff;
+    text-shadow: 0 0 4px #000;
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  a:hover {
+    color: #ffd700; /* 黄色に変化 */
+    text-decoration: underline;
+  }
+
+  h1 {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 12px;
+    border-radius: 10px;
+    display: inline-block;
+  }
+
+  ul {
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 16px;
+    border-radius: 8px;
+    width: fit-content;
+  }
+
+  li {
+    margin-bottom: 8px;
+  }
+</style>
+</head>
+<body>
+  <h1>🍔 滋賀のバーガー店</h1>
+
+  <ul id="shop-list"></ul>
+
+  <a href="index.html">← トップページに戻る</a>
+
+  <script>
+    const shops = [
+      { name: "Thousand Wave", score: 32.5, link: "store_shiga_thousand_wave.html" },
+    ];
+
+    shops.sort((a, b) => b.score - a.score);
+
+    const list = document.getElementById("shop-list");
+    shops.forEach(shop => {
+      const li = document.createElement("li");
+      li.innerHTML = `<a href="${shop.link}">${shop.name}（${shop.score}点）</a>`;
+      list.appendChild(li);
+    });
+  </script>
+</body>
+</html>
